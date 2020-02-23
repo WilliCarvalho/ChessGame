@@ -1,0 +1,11 @@
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\bin\Debug\netcoreapp2.2\ChessGame.deps.json
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\bin\Debug\netcoreapp2.2\ChessGame.runtimeconfig.json
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\bin\Debug\netcoreapp2.2\ChessGame.runtimeconfig.dev.json
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\bin\Debug\netcoreapp2.2\ChessGame.dll
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\bin\Debug\netcoreapp2.2\ChessGame.pdb
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\obj\Debug\netcoreapp2.2\ChessGame.csprojAssemblyReference.cache
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\obj\Debug\netcoreapp2.2\ChessGame.csproj.CoreCompileInputs.cache
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\obj\Debug\netcoreapp2.2\ChessGame.AssemblyInfoInputs.cache
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\obj\Debug\netcoreapp2.2\ChessGame.AssemblyInfo.cs
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\obj\Debug\netcoreapp2.2\ChessGame.dll
+C:\Users\w.souza.carvalho\Desktop\C#Learning\ChessGame\ChessGame\obj\Debug\netcoreapp2.2\ChessGame.pdb

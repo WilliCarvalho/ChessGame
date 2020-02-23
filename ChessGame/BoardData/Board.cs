@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChessGame.Board
+namespace ChessGame.BoardData
 {
     class Board
     {
@@ -15,6 +15,11 @@ namespace ChessGame.Board
             Rows = rows;
             Columns = columns;
             Pieces = new Piece[rows, columns];
+        }
+
+        public Piece Piece(int row, int column)
+        {
+            return Pieces[row, column];
         }
     }
 }

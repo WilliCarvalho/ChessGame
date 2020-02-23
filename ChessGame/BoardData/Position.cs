@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChessGame.Board
+namespace ChessGame.BoardData
 {
     class Position
     {
