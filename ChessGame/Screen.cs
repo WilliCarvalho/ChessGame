@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ChessGame.BoardData;
+using ChessGame.ChessData;
 
 namespace ChessGame
 {
@@ -19,7 +20,7 @@ namespace ChessGame
                     }
                     else
                     {
-                        Console.WriteLine(board.Piece(i,j) + " ");
+                        Console.Write(board.Piece(i,j) + " ");
                     }
                 }
                 Console.WriteLine();
