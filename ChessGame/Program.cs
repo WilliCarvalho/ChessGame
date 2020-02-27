@@ -8,24 +8,10 @@ namespace ChessGame
     {
         static void Main(string[] args)
         {
-            
-            try
-            {
-                Board board = new Board(8, 8);
+            ChessPosition chess = new ChessPosition('c', 7);
 
-                board.PutPiece(new Tower(board, Color.Black), new Position(0, 0));
-                board.PutPiece(new Tower(board, Color.Black), new Position(1, 3));
-                board.PutPiece(new King(board, Color.Black), new Position(0, 2));
-
-                Screen.PrintBoard(board);
-            }
-            catch(BoardException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-
-            
+            Console.WriteLine(chess);
+            Console.WriteLine(chess.ToPosition());
 
             Console.ReadLine();
         }

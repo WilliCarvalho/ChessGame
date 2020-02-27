@@ -17,7 +17,7 @@ namespace ChessGame.BoardData
 
         public override string ToString()
         {
-            return $"{Row}, {Column}";
+            return $"{Column}, {Row}";
         }
     }
 }
