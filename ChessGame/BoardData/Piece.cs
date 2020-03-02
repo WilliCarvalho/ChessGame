@@ -19,7 +19,10 @@ namespace ChessGame.BoardData
             QtMovement = 0;
         }
 
-
+        public void IncrementQtMovements()
+        {
+            QtMovement++;
+        }
 
     }
 }

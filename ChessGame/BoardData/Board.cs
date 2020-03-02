@@ -43,6 +43,18 @@ namespace ChessGame.BoardData
             p.Position = pos;
         }
 
+        public Piece TakeOutPiece (Position position)
+        {
+            if(Piece(position) == null)
+            {
+                return null;
+            }
+            Piece aux = Piece(position);
+            aux.Position = null;
+            Pieces[position.Row, position.Column] = null;
+            return aux;
+        }
+
         public bool ValidPosition (Position pos)
         {
             if(pos.Row < 0 || pos.Row >= Rows || pos.Column < 0 || pos.Column >= Columns)
