@@ -24,7 +24,7 @@ namespace ChessGame.BoardData
 
         public Piece Piece(Position pos)
         {
-            return Pieces[pos.Row, pos.Column];
+            return Pieces[pos.Column, pos.Row];
         }
 
         public bool ExistPiece(Position pos)
@@ -51,7 +51,7 @@ namespace ChessGame.BoardData
             }
             Piece aux = Piece(position);
             aux.Position = null;
-            Pieces[position.Row, position.Column] = null;
+            Pieces[position.Column, position.Row] = null;
             return aux;
         }
 

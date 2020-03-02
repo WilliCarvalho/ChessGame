@@ -10,12 +10,14 @@ namespace ChessGame.ChessData
         public Board Board { get; private set; }
         private int Turn;
         private Color CurrentPlayer;
+        public bool Finished { get; private set; }
 
         public ChessMatch()
         {
             Board = new Board(8, 8);
             Turn = 1;
             CurrentPlayer = Color.White;
+            Finished = false;
             PutPieces();
         }
 
