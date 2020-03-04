@@ -17,7 +17,7 @@ namespace ChessGame.BoardData
             Pieces = new Piece[rows, columns];
         }
 
-        public Piece Piece(int row, int column)
+        public Piece Piece(int column, int row)
         {
             return Pieces[row, column];
         }

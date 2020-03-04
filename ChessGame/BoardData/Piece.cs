@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ChessGame.BoardData
 {
-    class Piece
+    abstract class Piece
     {
         public Position Position { get; set; }
         public Color Color { get; protected set; }
@@ -18,6 +18,8 @@ namespace ChessGame.BoardData
             Color = color;
             QtMovement = 0;
         }
+
+        public abstract bool[,] PossibleMoves();
 
         public void IncrementQtMovements()
         {
