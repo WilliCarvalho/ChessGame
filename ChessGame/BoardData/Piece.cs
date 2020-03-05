@@ -19,6 +19,29 @@ namespace ChessGame.BoardData
             QtMovement = 0;
         }
 
+        //Verify if Exists possible moves to the Piece
+        public bool ExistPossibleMoves()
+        {
+            bool [,] mat = PossibleMoves();
+            for(int i = 0; i<Board.Rows; i++)
+            {
+                for (int j = 0; j < Board.Columns; j++)
+                {
+                    if (mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        //Inform if the piece can move to the destination
+        public bool CanMoveTo(Position pos)
+        {
+            return PossibleMoves()[pos.Row, pos.Column];
+        }
+
         public abstract bool[,] PossibleMoves();
 
         public void IncrementQtMovements()

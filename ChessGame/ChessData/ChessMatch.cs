@@ -8,8 +8,8 @@ namespace ChessGame.ChessData
     class ChessMatch
     {
         public Board Board { get; private set; }
-        private int Turn;
-        private Color CurrentPlayer;
+        public int Turn { get; private set; }
+        public Color CurrentPlayer { get; private set; }
         public bool Finished { get; private set; }
 
         public ChessMatch()
@@ -27,6 +27,50 @@ namespace ChessGame.ChessData
             p.IncrementQtMovements();
             Piece capturedPiece = Board.TakeOutPiece(destiny);
             Board.PutPiece(p, destiny);
+        }
+
+        public void PerformMove(Position origin, Position destiny)
+        {
+            ExecuteMovement(origin, destiny);
+            Turn++;
+            ChangePlayer();
+        }
+
+
+        public void ValidateOriginPosition(Position pos)
+        {
+            if(Board.Piece(pos) == null)
+            {
+                throw new BoardException("Doesn't have any Piece in this position!");
+            }
+            else if(CurrentPlayer != Board.Piece(pos).Color)
+            {
+                throw new BoardException("The piece you choose isn't yours");
+            }
+            else if (!Board.Piece(pos).ExistPossibleMoves())
+            {
+                throw new BoardException("Doesn't have any possible moves for this piece");
+            }
+        }
+
+        public void ValidateDestinyPosition(Position origin, Position destiny)
+        {
+            if (!Board.Piece(origin).CanMoveTo(destiny))
+            {
+                throw new BoardException("Destiny position is invalid");
+            }
+        }
+
+        public void ChangePlayer()
+        {
+            if(CurrentPlayer == Color.White)
+            {
+                CurrentPlayer = Color.Black;
+            }
+            else
+            {
+                CurrentPlayer = Color.White;
+            }
         }
 
         private void PutPieces()
