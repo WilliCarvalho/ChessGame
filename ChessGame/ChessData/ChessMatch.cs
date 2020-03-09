@@ -13,6 +13,7 @@ namespace ChessGame.ChessData
         public bool Finished { get; private set; }
         private HashSet<Piece> Pieces;
         private HashSet<Piece> Captured;
+        public bool Check { get; private set; }
 
         public ChessMatch()
         {
@@ -25,7 +26,7 @@ namespace ChessGame.ChessData
             PutPieces();
         }
 
-        public void ExecuteMovement(Position origin, Position destiny)
+        public Piece ExecuteMovement(Position origin, Position destiny)
         {
             Piece p = Board.TakeOutPiece(origin);
             p.IncrementQtMovements();
@@ -35,11 +36,41 @@ namespace ChessGame.ChessData
             {
                 Captured.Add(capturedPiece);
             }
+
+            return capturedPiece;
+        }
+
+        public void UndoMovement(Position origin, Position destiny, Piece capturedPiece)
+        {
+            Piece p = Board.TakeOutPiece(destiny);
+            p.DecrementQtMovements();
+            if(capturedPiece != null)
+            {
+                Board.PutPiece(capturedPiece, destiny);
+                Captured.Remove(capturedPiece);
+            }
+            Board.PutPiece(p, origin);
         }
 
         public void PerformMove(Position origin, Position destiny)
         {
-            ExecuteMovement(origin, destiny);
+            Piece capturedPiece = ExecuteMovement(origin, destiny); 
+
+            if (IsInCHeck(CurrentPlayer))
+            {
+                UndoMovement(origin, destiny, capturedPiece);
+                throw new BoardException("You can't put yourself in Check!");
+            }
+
+            if (IsInCHeck(OponnentColor(CurrentPlayer)))
+            {
+                Check = true;
+            }
+            else
+            {
+                Check = false;
+            }
+
             Turn++;
             ChangePlayer();
         }
@@ -99,7 +130,7 @@ namespace ChessGame.ChessData
         public HashSet<Piece> InGamePieces(Color color)
         {
             HashSet<Piece> aux = new HashSet<Piece>();
-            foreach(Piece x in Captured)
+            foreach(Piece x in Pieces)
             {
                 if(x.Color == color)
                 {
@@ -108,8 +139,51 @@ namespace ChessGame.ChessData
             }
             aux.ExceptWith(CapturedPieces(color));
             return aux;
-            return aux;
         }
+
+        private Color OponnentColor(Color color)
+        {
+            if(color == Color.White)
+            {
+                return Color.Black;
+            }
+            else
+            {
+                return Color.White;
+            }
+        }
+
+        private Piece King(Color color)
+        {
+            foreach (Piece piece in InGamePieces(color))
+            {
+                if(piece is King)
+                {
+                    return piece;
+                }
+            }
+            return null;
+        }
+
+        public bool IsInCHeck(Color color)
+        {
+            Piece k = King(color);
+            if(k == null)
+            {
+                throw new BoardException($"The king with the color {color} doesn't exist!");
+            }
+
+            foreach (Piece piece in InGamePieces(OponnentColor(color)))
+            {
+                bool[,] mat = piece.PossibleMoves();
+                if(mat[k.Position.Row, k.Position.Column] == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
         //Add a new piece to the board and to the pieces list
         public void PutNewPiece(char column, int row, Piece piece)

@@ -17,8 +17,7 @@ namespace ChessGame
                 {
 
                     Console.Clear();
-                    Screen.PrintMatch(match);
-                    Screen.PrintCapturedPieces(match);
+                    Screen.PrintMatch(match);                    
 
                     Console.WriteLine();
                     Console.Write("Origin: ");

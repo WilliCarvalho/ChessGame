@@ -11,8 +11,15 @@ namespace ChessGame
         {
             PrintBoard(match.Board);
             Console.WriteLine();
+            PrintCapturedPieces(match);
+            Console.WriteLine();
             Console.WriteLine("Turn: " + match.Turn);
             Console.WriteLine("Waiting move of: " + match.CurrentPlayer);
+
+            if (match.Check)
+            {
+                Console.WriteLine("YOU'R IN CHECK!");
+            }
         }
 
         public static void PrintCapturedPieces(ChessMatch match)

@@ -11,6 +11,8 @@ namespace ChessGame.BoardData
         public int QtMovement { get; protected set; }
         public Board Board { get; protected set; }
 
+        public abstract bool[,] PossibleMoves();
+
         public Piece(Board board, Color color)
         {
             Position = null;
@@ -42,11 +44,15 @@ namespace ChessGame.BoardData
             return PossibleMoves()[pos.Row, pos.Column];
         }
 
-        public abstract bool[,] PossibleMoves();
 
         public void IncrementQtMovements()
         {
             QtMovement++;
+        }
+
+        public void DecrementQtMovements()
+        {
+            QtMovement--;
         }
 
     }
